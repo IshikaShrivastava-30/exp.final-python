@@ -1,0 +1,68 @@
+import pandas as pd
+import matplotlib.pyplot as plt
+
+# Sample demographic data
+data = {
+    'State': ['Maharashtra', 'Gujarat', 'Karnataka',
+              'Rajasthan', 'Kerala'],
+    'Population': [124000000, 70000000, 68000000,
+                   81000000, 36000000],
+    'Literacy Rate': [82, 78, 75, 69, 94],
+    'Employment Rate': [48, 46, 52, 43, 44]
+}
+
+# Create DataFrame
+df = pd.DataFrame(data)
+
+# Display demographic data
+print("\nGLOBAL STATE/PROVINCE DEMOGRAPHIC ANALYZER")
+print(df)
+
+# Total population
+print("\nTotal Population:", df['Population'].sum())
+
+# Average literacy rate
+print("Average Literacy Rate:",
+      df['Literacy Rate'].mean(), "%")
+
+# Average employment rate
+print("Average Employment Rate:",
+      df['Employment Rate'].mean(), "%")
+
+# State with highest population
+print("\nHighest Population:")
+print(df.loc[df['Population'].idxmax()])
+
+# State with highest literacy
+print("\nHighest Literacy Rate:")
+print(df.loc[df['Literacy Rate'].idxmax()])
+
+# Population Graph
+plt.figure(figsize=(8, 5))
+plt.bar(df['State'], df['Population'])
+plt.title("State-wise Population")
+plt.xlabel("States")
+plt.ylabel("Population")
+plt.xticks(rotation=30)
+plt.tight_layout()
+plt.show()
+
+# Literacy Rate Graph
+plt.figure(figsize=(8, 5))
+plt.bar(df['State'], df['Literacy Rate'], color='green')
+plt.title("State-wise Literacy Rate")
+plt.xlabel("States")
+plt.ylabel("Literacy Rate (%)")
+plt.xticks(rotation=30)
+plt.tight_layout()
+plt.show()
+
+# Employment Rate Graph
+plt.figure(figsize=(8, 5))
+plt.bar(df['State'], df['Employment Rate'], color='orange')
+plt.title("State-wise Employment Rate")
+plt.xlabel("States")
+plt.ylabel("Employment Rate (%)")
+plt.xticks(rotation=30)
+plt.tight_layout()
+plt.show()
